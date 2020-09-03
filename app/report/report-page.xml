@@ -1,0 +1,53 @@
+<Page
+    class="page"
+    loaded="onLoaded" 
+    navigatingTo="onNavigatingTo"  
+    xmlns:datetime="nativescript-datetimepicker"
+    xmlns:dd="nativescript-drop-down"
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar class="action-bar">
+        <Label class="action-bar-title" text="Send Report To Email"></Label>
+        <ActionItem tap="sendMail" android.systemIcon="ic_menu_send" android.position="actionBar" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="OPSI LAPORAN" class="form-label" />
+                <dd:DropDown items="{{ items_laporan }}" class="form-dropdown" selectedIndex="{{ laporanSelectedIndex }}" 
+                        hint="~ Pilih Opsi Laporan ~" />
+            </StackLayout>
+            <GridLayout rows="auto, auto" columns="*,*" class="form-container">
+                <StackLayout row="0" col="0">
+                    <Label text="PERIODE LAPORAN"  padding="5" />
+                </StackLayout>
+                <StackLayout row="1"  col="0">
+                    <Label text="STAR DATE" class="form-label" />
+                    <datetime:DatePickerField class="input" hint="Start Date" dateFormat="yyyy-MM-dd" text="{{ start_date }}" />
+                </StackLayout>
+                <StackLayout row="1"  col="1">
+                    <Label text="END DATE" class="form-label" />
+                    <datetime:DatePickerField class="input" hint="End Date" dateFormat="yyyy-MM-dd" text="{{ end_date }}" />
+                </StackLayout>
+            </GridLayout>
+            <GridLayout rows="auto,auto,auto,auto,auto" class="form-container">
+                <StackLayout row="0">
+                    <Label text="EMAIL TUJUAN"  padding="5" />
+                </StackLayout>
+                <StackLayout row="1">
+                    <Label text="TO" class="form-label" />
+                    <TextView text="{{ to }}" hint="to (gunakan ; sebagai pemisah jika email lebih dari satu)" class="form-input" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />
+                </StackLayout>
+                <StackLayout row="2">
+                    <Label text="CC" class="form-label" />
+                    <TextView text="{{ cc }}" hint="cc (gunakan ; sebagai pemisah jika email lebih dari satu)" class="form-input" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />
+                </StackLayout>
+                <StackLayout row="3">
+                    <Label text="BCC" class="form-label" />
+                    <TextView text="{{ bcc }}" hint="bcc (gunakan ; sebagai pemisah jika email lebih dari satu)" class="form-input" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

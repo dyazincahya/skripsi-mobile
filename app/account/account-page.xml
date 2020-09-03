@@ -1,0 +1,43 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label text="Account"></Label>
+    </ActionBar>
+
+    <ScrollView orientation="vertical">
+        <StackLayout class="page__content">
+        	<StackLayout class="m-20">
+                <Label text="Keamanan" class="ac-title" textWrap="true" />
+                <Label text="*) isi inputan dibawah ini jika kamu ingin mengubah password kamu!" class="ac-note" textWrap="true" />
+
+                <Label text="Password Baru" class="ac-label" textWrap="true" />
+                <TextField text="{{ password1 }}" hint="* * * * * * * *" secure="true" class="ac-input" />
+
+                <Label text="Konfirmasi Password Baru" class="ac-label" textWrap="true" />
+                <TextField text="{{ password2 }}" hint="* * * * * * * *" secure="true" class="ac-input" />
+
+                <Button text="Simpan Perubahan" tap="updatePassword" marginBottom="20" />
+
+    	    	<Label text="Informasi Personal" class="ac-title" textWrap="true" />
+
+                <Label text="NIK" class="ac-label" textWrap="true" />
+                <Label text="{{ nik }}" class="ac-val" textWrap="true" />
+
+                <Label text="Nama Lengkap" class="ac-label" textWrap="true" />
+                <Label text="{{ fullname }}" class="ac-val" textWrap="true" />
+
+                <Label text="No Handphone" class="ac-label" textWrap="true" />
+                <Label text="{{ nohp }}" class="ac-val" textWrap="true" />
+
+                <Label text="Email" class="ac-label" textWrap="true" />
+                <Label text="{{ email }}" class="ac-val" textWrap="true" />
+
+                <Label text="Pendidikan Terakhir" class="ac-label" textWrap="true" />
+                <Label text="{{ last_strata }}" class="ac-val" textWrap="true" />
+    	    </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

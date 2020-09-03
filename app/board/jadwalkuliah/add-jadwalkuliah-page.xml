@@ -1,0 +1,65 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:datetime="nativescript-datetimepicker"
+    xmlns:dd="nativescript-drop-down" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Tambah Jadwal Kuliah"></Label>
+        <ActionItem tap="save" android.systemIcon="ic_menu_save" android.position="actionBar" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="DOSEN" class="form-label" />
+                <dd:DropDown items="{{ elval_dosen }}" class="form-dropdown" selectedIndex="{{ dosenSelectedIndex }}" 
+                        hint="~ Pilih Dosen ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="RUANGAN" class="form-label" />
+                <dd:DropDown items="{{ elval_ruangan }}" class="form-dropdown" selectedIndex="{{ ruanganSelectedIndex }}" 
+                        hint="~ Pilih Ruangan ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="MATAKULIAH" class="form-label" />
+                <dd:DropDown items="{{ elval_matakuliah }}" class="form-dropdown" selectedIndex="{{ matakuliahSelectedIndex }}" 
+                        hint="~ Pilih Matakuliah ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="HARI" class="form-label" />
+                <dd:DropDown items="{{ items_hari }}" class="form-dropdown" selectedIndex="{{ hariSelectedIndex }}" 
+                        hint="~ Pilih Hari ~" />
+            </StackLayout>
+            <GridLayout rows="auto, auto" columns="*,*" class="form-container">
+                <StackLayout row="0" col="0">
+                    <Label text="JAM PERKULIAHAN"  padding="5" />
+                </StackLayout>
+                <StackLayout row="1"  col="0">
+                    <Label text="MULAI" class="form-label" />
+                    <datetime:TimePickerField class="input" hint="Jam Mulai" text="{{ start_time }}" />
+                </StackLayout>
+                <StackLayout row="1"  col="1">
+                    <Label text="SELESAI" class="form-label" />
+                    <datetime:TimePickerField class="input" hint="Jam Selesai" text="{{ end_time }}" />
+                </StackLayout>
+            </GridLayout>
+
+            <GridLayout rows="auto, auto" columns="*,*" class="form-container">
+                <StackLayout row="0" col="0">
+                    <Label text="PERKULIAHAN AKTIF"  padding="5" />
+                </StackLayout>
+                <StackLayout row="1"  col="0">
+                    <Label text="DARI TANGGAL" class="form-label" />
+                    <datetime:DatePickerField class="input" hint="Dari" dateFormat="yyyy-MM-dd" text="{{ start_date }}" />
+                </StackLayout>
+                <StackLayout row="1"  col="1">
+                    <Label text="SAMPAI TANGGAL" class="form-label" />
+                    <datetime:DatePickerField class="input" hint="Sampai" dateFormat="yyyy-MM-dd" text="{{ end_date }}" />
+                </StackLayout>
+            </GridLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,52 @@
+.page {
+  align-items: center;
+  flex-direction: column;
+  background-color: #FF1444; /*ffea00*/
+}
+.form {
+  margin-left: 30;
+  margin-right: 30;
+  flex-grow: 2;
+  vertical-align: middle;
+}
+.logo {
+  margin-bottom: 5;
+  font-weight: bold;
+  padding: 20;
+}
+.header {
+  horizontal-align: center;
+  font-size: 25;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 15;
+  color: #FFFFFF;
+}
+.page .input-field {
+  margin-bottom: 25;
+}
+.input-field .input {
+  font-size: 18;
+  placeholder-color: #FFFFFF;
+  color: #FFFFFF;
+}
+.input:disabled {
+  background-color: #FFFFFF;
+  opacity: 0.5;
+}
+.btn-primary {
+  margin: 30 5 15 5;
+}
+.forgot-link {
+  horizontal-align: center;
+  color: #FFFFFF;
+  padding: 15;
+  font-size: 16;
+}
+.mark-label {
+  horizontal-align: center;
+  color: #FFFFFF;
+  font-size: 16;
+  font-weight: bold;
+  margin-top: 25;
+}

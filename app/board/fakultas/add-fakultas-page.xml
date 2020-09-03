@@ -1,0 +1,28 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Fakultas"></Label>
+    </ActionBar>
+
+    <StackLayout class="page__content">
+        <StackLayout visibility="{{ listData ? 'visible' : 'collapsed' }}">
+            <ListView items="{{ items }}" itemTap="onItemTap">
+                <ListView.itemTemplate> 
+                    <StackLayout orientation="vertical"> 
+                        <Label text="{{ f_strata }}" class="hm-mk-name" textWrap="true" />
+                        <Label text="{{ f_fakultas }}" class="hm-mk-name" textWrap="true" />
+                        <Label text="{{ f_fakultas_name }}" class="hm-mk-name" textWrap="true" />
+                    </StackLayout>
+                </ListView.itemTemplate> 
+            </ListView>
+        </StackLayout>
+        <StackLayout visibility="{{ noData ? 'visible' : 'collapsed' }}">
+            <Label class="page__content-icon far" text="&#xf073;"/>
+            <Label class="page__content-placeholder" text="Tidak ada data!"/>
+        </StackLayout>
+    </StackLayout>
+</Page>

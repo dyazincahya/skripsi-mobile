@@ -1,0 +1,22 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Edit Fakultas"></Label>
+        <ActionItem tap="add" android.systemIcon="ic_menu_save" android.position="actionBar" />
+    </ActionBar>
+
+    <StackLayout class="page__content m-20">
+        <Label text="Strata" class="ac-label" textWrap="true" />
+        <TextField text="{{ strata }}" hint=". . . . . . . ." class="ac-input" />
+
+        <Label text="Fakultas" class="ac-label" textWrap="true" />
+        <TextField text="{{ fakultas }}" hint=". . . . . . . ." class="ac-input" />        
+        
+        <Label text="Fakultas Name" class="ac-label" textWrap="true" />
+        <TextField text="{{ fakultasname }}" hint=". . . . . . . ." class="ac-input" />        
+    </StackLayout>
+</Page>

@@ -1,0 +1,42 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <Label text="Home"></Label>
+    </ActionBar>
+
+    <GridLayout rows="auto,*" columns="auto,*" height="100%">
+        <StackLayout row="0" col="0" class="hm-con-logo">
+            <Image src="res://icon" class="hm-logo" />
+            <Label text="PERSENSI APPS" class="hm-logo-name" />
+        </StackLayout>
+        
+        <StackLayout row="0" col="1" class="hm-info">
+            <Label text="{{ user_nik }}" class="hm-info-nik" />
+            <Label text="{{ user_fullname }}" class="hm-info-nik" />
+            <Label text="{{ user_role }}" class="hm-info-role" />
+        </StackLayout>
+        <StackLayout row="1" colSpan="2" class="page__content">
+            <Label text="Jadwal Kuliah Hari Ini" class="hm-subtitle" textWrap="true" />
+            <StackLayout visibility="{{ listData ? 'visible' : 'collapsed' }}">
+                <ListView items="{{ items }}" itemTap="onItemTap">
+                    <ListView.itemTemplate>
+                        <StackLayout orientation="vertical"> 
+                            <Label text="{{ r_id }}" visibility="collapsed" />
+                            <Label text="{{ mk_id }}" visibility="collapsed" />
+                            <Label text="{{ 'Kampus ' + r_kampus + ' Ruangan ' + r_name }}" />
+                            <Label text="{{ mk_name }}" class="hm-mk-name" textWrap="true" />
+                            <Label text="{{ jk_day + ', ' + jk_date + ' Dari ' + jk_start_kuliah + ' - ' + 'Sampai ' + jk_end_kuliah }}" class="hm-jk-date" textWrap="true" />
+                        </StackLayout>
+                    </ListView.itemTemplate>
+                </ListView>
+            </StackLayout>
+            <StackLayout visibility="{{ noData ? 'visible' : 'collapsed' }}">
+                <Label class="page__content-icon far" text="&#xf073;"/>
+                <Label class="page__content-placeholder" text="Tidak ada jadwal kuliah!"/>
+            </StackLayout>
+        </StackLayout>
+    </GridLayout>
+</Page>

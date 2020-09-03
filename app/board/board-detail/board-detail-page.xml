@@ -1,0 +1,35 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="{{ titleName }}"></Label>
+    </ActionBar>
+
+    <StackLayout class="page__content">
+        <Label text="{{ 'Presensi Matakuliah ' + matkulName }}" class="hmp-subtitle" textWrap="true" />
+        <StackLayout visibility="{{ listData ? 'visible' : 'collapsed' }}">
+            <ListView items="{{ items }}">
+                <ListView.itemTemplate> 
+                    <StackLayout orientation="vertical" class="{{ has_absen ? 'hmp-absen' : 'xhmp' }}"> 
+                        <Label text="{{ has_absen ? (kehadiran ? 'Hari ini hadir' : 'Hari ini tidak hadir') : 'Belum ada absen hari ini' }}" class="hmp-status" />
+                        <Label text="{{ m_fullname }}" class="hm-mk-name" textWrap="true" />
+                        <StackLayout orientation="horizontal">
+                            <Label text="{{ 'Hadir ' + total_hadir }}" class="hmp-green" textWrap="true" />
+                            <Label text=" . " class="hm-jk-time" textWrap="true" />
+                            <Label text="{{ 'Tidak Hadir ' + total_alpha }}" class="hmp-red" textWrap="true" />
+                            <Label text=" . " class="hm-jk-time" textWrap="true" />
+                            <Label text="{{ 'Total ' + total_absen }}" class="hmp-status" />
+                        </StackLayout>
+                    </StackLayout>
+                </ListView.itemTemplate> 
+            </ListView>
+        </StackLayout>
+        <StackLayout visibility="{{ noData ? 'visible' : 'collapsed' }}">
+            <Label class="page__content-icon far" text="&#xf073;"/>
+            <Label class="page__content-placeholder" text="Tidak ada data!"/>
+        </StackLayout>
+    </StackLayout>
+</Page>

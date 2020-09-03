@@ -1,0 +1,34 @@
+<Page loaded="onLoaded" actionBarHidden="true" backgroundSpanUnderStatusBar="false" xmlns="http://www.nativescript.org/tns.xsd">
+    <BottomNavigation selectedIndex="{{ tabSelected }}">
+        <TabStrip>
+            <TabStripItem class="navigation__item">
+                <Label text="Board" />
+                <Image src="font://&#xf0db;" class="fas t-36" />
+            </TabStripItem>
+            <TabStripItem class="navigation__item">
+                <Label text="Report" />
+                <Image src="font://&#xf1d8;" class="far t-36" />
+            </TabStripItem>
+            <TabStripItem class="navigation__item">
+                <Label text="Account" />
+                <Image src="font://&#xf2bd;" class="far t-36" />
+            </TabStripItem>
+            <TabStripItem tap="logout">
+                <Label text="Logout" />
+                <Image src="font://&#xf011;" class="fas t-36" />
+            </TabStripItem>
+        </TabStrip>
+
+        <TabContentItem>
+            <Frame defaultPage="board/board-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="report/report-page" />
+        </TabContentItem>
+
+        <TabContentItem>
+            <Frame defaultPage="account/account-page" />
+        </TabContentItem>
+    </BottomNavigation>
+</Page>

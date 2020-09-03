@@ -1,0 +1,31 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Jadwal Kuliah"></Label>
+        <ActionItem tap="add" android.systemIcon="ic_menu_add" android.position="actionBar" />
+    </ActionBar>
+
+    <StackLayout class="page__content">
+        <StackLayout visibility="{{ listData ? 'visible' : 'collapsed' }}">
+            <ListView items="{{ items }}" itemTap="edit">
+                <ListView.itemTemplate> 
+                    <StackLayout orientation="vertical"> 
+                        <Label text="{{ r_id }}" visibility="collapsed" />
+                        <Label text="{{ mk_id }}" visibility="collapsed" />
+                        <Label text="{{ 'Kampus ' + r_kampus + ' Ruangan ' + r_name }}" />
+                        <Label text="{{ mk_name }}" class="hm-mk-name" textWrap="true" />
+                        <Label text="{{ 'Setiap ' + jk_day + ', Dari ' + jk_start_kuliah + ' - ' + 'Sampai ' + jk_end_kuliah }}" class="hm-jk-date" textWrap="true" />
+                    </StackLayout>
+                </ListView.itemTemplate> 
+            </ListView>
+        </StackLayout>
+        <StackLayout visibility="{{ noData ? 'visible' : 'collapsed' }}">
+            <Label class="page__content-icon far" text="&#xf073;"/>
+            <Label class="page__content-placeholder" text="Tidak ada data!"/>
+        </StackLayout>
+    </StackLayout>
+</Page>

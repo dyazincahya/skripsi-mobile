@@ -1,0 +1,30 @@
+<Page 
+    loaded="onLoaded" 
+    navigatingTo="onNavigatingTo" 
+    class="page" 
+    actionBarHidden="true" 
+    backgroundSpanUnderStatusBar="false" 
+    xmlns="http://www.nativescript.org/tns.xsd">
+
+    <FlexboxLayout class="page">
+        <StackLayout class="form">
+            <Image class="logo" src="res://icon" height="70" />
+            <Label class="header" text="PRESENSI APPS" />
+
+            <GridLayout rows="auto, auto, auto">
+                <StackLayout row="0" class="input-field">
+                    <TextField class="input" text="{{ email }}" hint="Email" keyboardType="email" autocorrect="false" autocapitalizationType="none" returnKeyType="next" />
+                </StackLayout>
+
+                <StackLayout row="1" class="input-field">
+                    <TextField id="password" class="input" text="{{ password }}" hint="Password" secure="true" />
+                </StackLayout>
+            </GridLayout>
+
+            <Button text="Log In" class="btn btn-primary m-t-20" tap="login" />
+            <Label text="Forgot password? Reset now here" class="forgot-link" tap="forgotpassword" />
+
+            <Label text="UNIVERSITAS KUNINGAN" class="mark-label" />
+        </StackLayout>
+    </FlexboxLayout>
+</Page>

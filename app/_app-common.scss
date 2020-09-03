@@ -1,0 +1,242 @@
+@import "~@nativescript/theme/core";
+@import "~@nativescript/theme/ruby"; 
+
+// Place any CSS rules you want to apply on both iOS and Android here.
+// This is where the vast majority of your CSS code goes.
+
+// Font icon class
+.fab {
+    font-family: "Font Awesome 5 Brands", "fa-brands-400";
+    font-weight: 400;
+}
+
+.fas {
+    font-family: "Font Awesome 5 Free", "fa-solid-900";
+    font-weight: 900;
+}
+
+.far {
+    font-family: "Font Awesome 5 Free", "fa-regular-400";
+    font-weight: 400;
+}
+
+// Custom tabstrip item class
+.navigation__item {
+    &:active,
+    &:active Label {
+        @include colorize($contrasted-color: complementary background 20% 0%);
+    }
+}
+
+// Common page class
+.page__content {
+    &-icon,
+    &-placeholder {
+        color: const(grey);
+        font-size: 20;
+        vertical-align: center;
+        horizontal-align: center;
+    }
+
+    &-icon {
+        font-size: 72;
+        vertical-align: top;
+        margin-top: 20%;
+    }
+}
+
+/* HOME-PAGE */
+.hm-subtitle{
+    font-size:14;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #616161;
+    margin-top: 20;
+    margin-left: 10;
+}
+.hm-jk-date{
+    font-size: 12;
+    color: #BDBDBD;
+}
+.hm-mk-name{
+    font-size: 15;
+    text-transform: uppercase;
+    padding:0;
+    margin-left:5;
+    color: #757575;
+}
+.hm-jk-time{
+    text-transform: lowercase;
+    padding: 0;
+    margin: 0;
+    color: #BDBDBD;
+}
+.hm-con-logo{
+    background-color:#ffebee;
+    margin-left:10;
+    margin-top:10;
+}
+.hm-logo{
+    height:50;
+    margin-left:20;
+    margin-right:20;
+    margin-bottom:5;
+    margin-top:20;
+}
+.hm-logo-name{
+    font-weight:bold; 
+    color: #757575;
+    margin-left:20;
+    margin-right:20;
+    margin-bottom:5;
+    margin-top:10;
+}
+.hm-info{
+    background-color:#E3F2FD;
+    padding:20;
+    margin-left:10;
+    margin-right:10;
+    margin-top:10;
+}
+.hm-info-role{
+    color: #757575;
+}
+.hm-info-nik{
+    color: #757575;
+    font-weight:bold;
+    font-size:14;
+}
+/* HOME-PRESENSI-PAGE */
+.hmp-subtitle{
+    font-size:14;
+    font-weight: bold;
+    color: #616161;
+    margin-top: 20;
+    margin-left: 10;
+    margin-bottom:20;
+}
+.hmp-green{
+    font-size: 12; 
+    padding: 0;
+    margin: 0;
+    color: #4CAF50;
+}
+.hmp-red{
+    font-size: 12;
+    padding: 0;
+    margin: 0;
+    color: #f44336;
+}
+.hmp-status{
+    font-size: 12;
+    margin: 0;
+    color: #BDBDBD;
+}
+.hmp-absen{
+    background-color: #FFFDE7;
+}
+.xhmp{
+    /* FAKE CLASS */
+}
+.hmp-hadir{
+    background-color: #E8F5E9;
+}
+.hmp-alpha{
+    background-color: #FFFDE7;
+}
+
+/* ACCOUNT */
+.ac-title{
+    font-size: 18;
+    color: #212121;
+    margin-bottom: 10;
+    font-weight: bold; 
+}
+.ac-note{
+    color: #f44336;
+    font-size: 12;
+    margin-bottom: 10;
+}
+.ac-label{
+    color: #BDBDBD;
+    font-size: 11;
+}
+.ac-val{
+    color: #757575; 
+    font-size: 15;
+    margin-bottom: 10;
+}
+.ac-input{
+    margin-left:0;
+    font-size: 13; 
+    color: #757575; 
+}
+
+/* FORM SEND REPORT */
+.form-container {
+    padding-left: 20;
+    padding-right: 20;
+    padding-top: 10;
+    padding-bottom: 20; 
+}
+.form-segment-title {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 5;
+    margin-top: 10;
+    font-size: 18;
+}
+.form-label {
+    text-transform: uppercase;
+    font-weight: bold;
+    margin-left: 5;
+    margin-top: 20;
+    color: #FF1444;
+}
+.form-value {
+    text-transform: uppercase;
+    margin-left: 5;
+    margin-top: 5;
+    color: #9E9E9E; 
+}
+.form-input{
+    background-color: #ffffff;
+    placeholder-color: #BDBDBD;
+    border-bottom-width: 1;
+    border-bottom-color: #BDBDBD;
+    border-bottom-style: solid;
+}
+.form-dropdown{
+  font-size: 18; 
+  text-align: left;
+  placeholder-color: #BDBDBD;
+  padding-left: 10;
+  padding-right: 10;
+  padding-top: 5;
+  padding-bottom: 5;
+}
+
+/* GLOBAL */
+.g-btn-menu{
+    padding: 10;
+    margin-top: 10;
+    margin-bottom: 10;
+    margin-right: 5;
+    background-color: #333;
+    color: #FFF; 
+    font-size: 18;
+    border-radius: 5; 
+    text-transform: lowercase;
+}
+
+.g-text-title{
+    font-size: 15;
+    color: #212121;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.g-text-subtitle{
+    font-size: 13;
+    color: #696969;
+}

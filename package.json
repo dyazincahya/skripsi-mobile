@@ -1,0 +1,36 @@
+{
+  "nativescript": {
+    "id": "com.kang.cahya.presensi",
+    "tns-ios": {
+      "version": "6.5.0"
+    },
+    "tns-android": {
+      "version": "6.5.3"
+    }
+  },
+  "description": "presensi apps for uniku (skripsi unindra)",
+  "license": "SEE LICENSE IN <your-license-filename>",
+  "repository": "<fill-your-repository-here>",
+  "scripts": {
+    "lint": "eslint \"app/**/*.js\""
+  },
+  "dependencies": {
+    "@nativescript/theme": "~2.3.0",
+    "@nstudio/nativescript-loading-indicator": "4.0.0",
+    "@nstudio/nativescript-pulltorefresh": "^2.0.0",
+    "audio": "1.2.0",
+    "nativescript-audio": "^5.1.1",
+    "nativescript-datetimepicker": "^1.2.2",
+    "nativescript-drop-down": "^5.0.6",
+    "nativescript-secure-storage": "^2.6.1",
+    "nativescript-toast": "^2.0.0",
+    "tns-core-modules": "~6.5.0"
+  },
+  "devDependencies": {
+    "eslint": "~5.8.0",
+    "nativescript-dev-webpack": "~1.5.0",
+    "node-sass": "^4.7.1"
+  },
+  "gitHead": "20a65d338ae8f8911087ab6615b89363f864b07b",
+  "readme": "NativeScript Application"
+}
