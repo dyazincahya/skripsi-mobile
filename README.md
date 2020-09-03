@@ -1,5 +1,5 @@
 # Skripsi Mobile
-Ini adalah sintak skripsi mobile aplikasi persensi
+[Universitas Indraprasta PGRI] - Kode program skripsi mobile Presensi Apps
 
 ### Akses
 ##### STAFF
@@ -9,5 +9,8 @@ Ini adalah sintak skripsi mobile aplikasi persensi
 - username : dosen@uniku.ac.id
 - password : 123
 
-### build with
+### Build With
 Nativescript Core 6.5.1
+
+### Created By
+Kang Cahya (Cahya Dyazin)
