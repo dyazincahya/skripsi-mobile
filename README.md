@@ -1,4 +1,4 @@
-# sk-frontend
+# Skripsi Mobile
 Ini adalah sintak skripsi mobile aplikasi persensi
 
 ### Akses
