@@ -8,31 +8,12 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage; 
+var context, framePage, items_strata = ["D1", "D2", "D3", "D4", "S1", "S2", "S3"];
 
-function renderResponse(result){
-    if(result.success == true){
-        if(result.total > 0){
-            context.set("items", result.data);
-            context.set("listData", true);
-            context.set("noData", false);
-        } else {
-            context.set("items", []);
-            context.set("listData", false);
-            context.set("noData", true);
-        }
-    } else {
-        context.set("items", []);
-        context.set("listData", false);
-        context.set("noData", true);
-    }
-    xLoading.hide();
-}
- 
-function getList(){
-    GModel.fakultas("index").then(function (result){
-        renderResponse(result);
-    });
+function resetForm() {
+    context.set("strataSelectedIndex", undefined);
+    context.set("xfakultas", "");
+    context.set("fakultasname", "");
 }
 
 exports.onLoaded = function(args) {
@@ -40,20 +21,21 @@ exports.onLoaded = function(args) {
 };
 
 exports.onNavigatingTo = function(args) {
-    const page = args.object; 
+    const page = args.object;
     context = GModel;
 
     xLoading.show(gConfig.loadingOption);
-    timerModule.setTimeout(function () {
-        getList();
+    timerModule.setTimeout(function() {
+        context.set("items_strata", items_strata);
+        xLoading.hide();
     }, gConfig.timeloader);
 
     page.bindingContext = context;
 };
 
-exports.onBackButtonTap= function(){
+exports.onBackButtonTap = function() {
     framePage.navigate({
-        moduleName: "home/home-page",
+        moduleName: "board/fakultas/list-fakultas-page",
         animated: true,
         transition: {
             name: "slide",
@@ -61,10 +43,44 @@ exports.onBackButtonTap= function(){
             curve: "ease"
         }
     });
-}
+};
 
-exports.onItemTap = function(args) {
-    let itemTap = args.view;
-    let itemTapData = itemTap.bindingContext;
- 
-}
+exports.save = function() {
+    let data = context;
+
+    if (data.strataSelectedIndex == undefined && data.xfakultas == undefined && data.fakultasname == undefined) {
+        toastModule.makeText("Semua inputan wajib diisi").show();
+        return;
+    }
+
+    if (data.strataSelectedIndex == "" && data.xfakultas == "" && data.fakultasname == "") {
+        toastModule.makeText("Semua inputan wajib diisi").show();
+        return;
+    }
+
+    let params = {
+        strata: items_strata[data.strataSelectedIndex],
+        fakultas: data.xfakultas,
+        fakultas_name: data.fakultasname
+    };
+
+    xLoading.show(gConfig.loadingOption);
+    GModel.fakultas("add", params).then(function(result) {
+        xLoading.hide();
+        if (result.success == true) {
+            toastModule.makeText(result.message).show();
+            framePage.navigate({
+                moduleName: "board/fakultas/list-fakultas-page",
+                animated: true,
+                transition: {
+                    name: "slide",
+                    duration: 200,
+                    curve: "ease"
+                }
+            });
+            resetForm();
+        } else {
+            toastModule.makeText(result.message).show();
+        }
+    });
+};

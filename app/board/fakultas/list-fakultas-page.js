@@ -8,11 +8,12 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage; 
+var context, framePage;
 
-function renderResponse(result){
-    if(result.success == true){
-        if(result.total > 0){
+function renderResponse(result) {
+    xLoading.hide();
+    if (result.success == true) {
+        if (result.total > 0) {
             context.set("items", result.data);
             context.set("listData", true);
             context.set("noData", false);
@@ -26,11 +27,10 @@ function renderResponse(result){
         context.set("listData", false);
         context.set("noData", true);
     }
-    xLoading.hide();
 }
- 
-function getList(){
-    GModel.fakultas("index").then(function (result){
+
+function getList() {
+    GModel.fakultas("index").then(function(result) {
         renderResponse(result);
     });
 }
@@ -40,18 +40,18 @@ exports.onLoaded = function(args) {
 };
 
 exports.onNavigatingTo = function(args) {
-    const page = args.object; 
+    const page = args.object;
     context = GModel;
 
     xLoading.show(gConfig.loadingOption);
-    timerModule.setTimeout(function () {
+    timerModule.setTimeout(function() {
         getList();
     }, gConfig.timeloader);
 
     page.bindingContext = context;
 };
 
-exports.onBackButtonTap= function(){
+exports.onBackButtonTap = function() {
     framePage.navigate({
         moduleName: "board/board-page",
         animated: true,
@@ -63,7 +63,7 @@ exports.onBackButtonTap= function(){
     });
 };
 
-exports.add = function() { 
+exports.add = function() {
     framePage.navigate({
         moduleName: "board/fakultas/add-fakultas-page",
         animated: true,
@@ -78,7 +78,7 @@ exports.add = function() {
 exports.edit = function(args) {
     let itemTap = args.view;
     let itemTapData = itemTap.bindingContext;
- 
+
     framePage.navigate({
         moduleName: "board/fakultas/edit-fakultas-page",
         context: { data: itemTapData },

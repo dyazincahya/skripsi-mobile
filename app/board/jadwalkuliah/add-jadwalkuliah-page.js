@@ -11,6 +11,10 @@ var GModel = new GlobalModel([]);
 var context, framePage, items_hari = ["SENIN", "SELASA", "RABU", "KAMIS", "JUMAT", "SABTU"];
 
 function resetForm() {
+    context.set("dosenSelectedIndex", undefined);
+    context.set("ruanganSelectedIndex", undefined);
+    context.set("matakuliahSelectedIndex", undefined);
+    context.set("hariSelectedIndex", undefined);
     context.set("start_time", "");
     context.set("start_date", "");
     context.set("end_time", "");
