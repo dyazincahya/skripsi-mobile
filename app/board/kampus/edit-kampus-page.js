@@ -1,4 +1,3 @@
-const appSettings = require("tns-core-modules/application-settings");
 const timerModule = require("tns-core-modules/timer");
 const toastModule = require("nativescript-toast");
 
@@ -8,11 +7,10 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage, ndata, items_strata = ["D1", "D2", "D3", "D4", "S1", "S2", "S3"];
+var context, framePage, ndata;
 
 exports.onLoaded = function(args) {
     framePage = args.object.frame;
-    context.set("items_strata", items_strata);
 };
 
 exports.onNavigatingTo = function(args) {
@@ -22,9 +20,8 @@ exports.onNavigatingTo = function(args) {
 
     xLoading.show(gConfig.loadingOption);
     timerModule.setTimeout(function() {
-        context.set("strataSelectedIndex", items_strata.indexOf(ndata.data.f_strata));
-        context.set("xfakultas", ndata.data.f_fakultas);
-        context.set("fakultasname", ndata.data.f_fakultas_name);
+        context.set("name", ndata.data.k_name);
+        context.set("alamat", ndata.data.k_alamat);
         xLoading.hide();
     }, gConfig.timeloader + 500);
 
@@ -33,7 +30,7 @@ exports.onNavigatingTo = function(args) {
 
 exports.onBackButtonTap = function() {
     framePage.navigate({
-        moduleName: "board/fakultas/list-fakultas-page",
+        moduleName: "board/kampus/list-kampus-page",
         animated: true,
         transition: {
             name: "slide",
@@ -46,30 +43,29 @@ exports.onBackButtonTap = function() {
 exports.save = function() {
     let data = context;
 
-    if (data.strataSelectedIndex == undefined && data.xfakultas == undefined && data.fakultasname == undefined) {
+    if (data.name == undefined && data.alamat == undefined) {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
-    if (data.strataSelectedIndex == "" && data.xfakultas == "" && data.fakultasname == "") {
+    if (data.name == "" && data.alamat == "") {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
     let params = {
-        id: ndata.data.f_id,
-        strata: items_strata[data.strataSelectedIndex],
-        fakultas: data.xfakultas,
-        fakultas_name: data.fakultasname
+        id: ndata.data.k_id,
+        name: data.name,
+        alamat: data.alamat
     };
 
     xLoading.show(gConfig.loadingOption);
-    GModel.fakultas("edit", params).then(function(result) {
+    GModel.kampus("edit", params).then(function(result) {
         xLoading.hide();
         if (result.success == true) {
             toastModule.makeText(result.message).show();
             framePage.navigate({
-                moduleName: "board/fakultas/list-fakultas-page",
+                moduleName: "board/kampus/list-kampus-page",
                 animated: true,
                 transition: {
                     name: "slide",
@@ -87,22 +83,22 @@ exports.save = function() {
 exports.delete = function() {
     confirm({
         title: "Hapus",
-        message: "Apa kamu yakin ingin menghapus fakultas ini?",
+        message: "Apa kamu yakin ingin menghapus kampus ini?",
         okButtonText: "Ya",
         cancelButtonText: "Batal"
     }).then((result) => {
         if (result) {
             let params = {
-                id: ndata.data.f_id
+                id: ndata.data.k_id
             };
 
             xLoading.show(gConfig.loadingOption);
-            GModel.fakultas("delete", params).then(function(result) {
+            GModel.kampus("delete", params).then(function(result) {
                 xLoading.hide();
                 if (result.success == true) {
                     toastModule.makeText(result.message).show();
                     framePage.navigate({
-                        moduleName: "board/fakultas/list-fakultas-page",
+                        moduleName: "board/kampus/list-kampus-page",
                         animated: true,
                         transition: {
                             name: "slide",

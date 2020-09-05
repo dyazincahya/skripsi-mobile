@@ -28,7 +28,7 @@ function renderResponse(result) {
 }
 
 function getList() {
-    GModel.fakultas("getList").then(function(result) {
+    GModel.kampus("getList").then(function(result) {
         renderResponse(result);
     });
 }
@@ -63,7 +63,7 @@ exports.onBackButtonTap = function() {
 
 exports.add = function() {
     framePage.navigate({
-        moduleName: "board/fakultas/add-fakultas-page",
+        moduleName: "board/kampus/add-kampus-page",
         animated: true,
         transition: {
             name: "slide",
@@ -78,7 +78,7 @@ exports.edit = function(args) {
     let itemTapData = itemTap.bindingContext;
 
     framePage.navigate({
-        moduleName: "board/fakultas/edit-fakultas-page",
+        moduleName: "board/kampus/edit-kampus-page",
         context: { data: itemTapData },
         animated: true,
         transition: {

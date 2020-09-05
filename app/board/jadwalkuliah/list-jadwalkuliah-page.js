@@ -1,6 +1,4 @@
-const appSettings = require("tns-core-modules/application-settings");
 const timerModule = require("tns-core-modules/timer");
-const toastModule = require("nativescript-toast");
 
 const LoadingIndicatorModule = require('@nstudio/nativescript-loading-indicator').LoadingIndicator;
 const xLoading = new LoadingIndicatorModule();
@@ -8,11 +6,11 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage; 
+var context, framePage;
 
-function renderResponse(result){
-    if(result.success == true){
-        if(result.total > 0){
+function renderResponse(result) {
+    if (result.success == true) {
+        if (result.total > 0) {
             context.set("items", result.data);
             context.set("listData", true);
             context.set("noData", false);
@@ -28,9 +26,9 @@ function renderResponse(result){
     }
     xLoading.hide();
 }
- 
-function getList(){
-    GModel.jadwalkuliah("getList").then(function (result){
+
+function getList() {
+    GModel.jadwalkuliah("getList").then(function(result) {
         renderResponse(result);
     });
 }
@@ -40,18 +38,18 @@ exports.onLoaded = function(args) {
 };
 
 exports.onNavigatingTo = function(args) {
-    const page = args.object; 
+    const page = args.object;
     context = GModel;
 
     xLoading.show(gConfig.loadingOption);
-    timerModule.setTimeout(function () {
+    timerModule.setTimeout(function() {
         getList();
     }, gConfig.timeloader);
 
     page.bindingContext = context;
 };
 
-exports.onBackButtonTap= function(){
+exports.onBackButtonTap = function() {
     framePage.navigate({
         moduleName: "board/board-page",
         animated: true,
@@ -63,7 +61,7 @@ exports.onBackButtonTap= function(){
     });
 };
 
-exports.add = function() { 
+exports.add = function() {
     framePage.navigate({
         moduleName: "board/jadwalkuliah/add-jadwalkuliah-page",
         animated: true,
@@ -78,7 +76,7 @@ exports.add = function() {
 exports.edit = function(args) {
     let itemTap = args.view;
     let itemTapData = itemTap.bindingContext;
- 
+
     framePage.navigate({
         moduleName: "board/jadwalkuliah/edit-jadwalkuliah-page",
         context: { data: itemTapData },

@@ -26,7 +26,7 @@
                         <Label class="g-btn-menu" marginLeft="5" text="Dosen" />
                         <Label class="g-btn-menu" text="Fakultas" tap="goToFakultas" />
                         <Label class="g-btn-menu" text="Jadwal Kuliah" tap="goToJadwalKuliah" />
-                        <Label class="g-btn-menu" text="Kampus" />
+                        <Label class="g-btn-menu" text="Kampus" tap="goToKampus" />
                         <Label class="g-btn-menu" text="Mahasiswa" />
                         <Label class="g-btn-menu" text="Matakuliah" />
                         <Label class="g-btn-menu" text="Ruangan" />

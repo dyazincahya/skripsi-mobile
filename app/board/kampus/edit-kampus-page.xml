@@ -1,0 +1,26 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:dd="nativescript-drop-down"   
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Edit Kampus"></Label>
+        <ActionItem tap="save" text="Save Change" android.position="popup" />
+        <ActionItem tap="delete" text="Delete" android.position="popup" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="NAME" class="form-label" />
+                <TextField hint="Ex : C" text="{{ name }}" class="ac-input" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="ADDRESS" class="form-label" />
+                <TextField hint="Ex : Jl. jend. Sudirman" text="{{ alamat }}" class="ac-input" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

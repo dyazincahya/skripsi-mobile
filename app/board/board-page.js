@@ -7,29 +7,29 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage; 
+var context, framePage;
 
-function setDataProfile(){
+function setDataProfile() {
     context.set("user_role", appSettings.getString("user_role"));
     context.set("user_nik", appSettings.getString("user_nik"));
     context.set("user_fullname", appSettings.getString("user_fullname"));
 }
 
-function hasItems(sts=true){
-    if(sts){
+function hasItems(sts = true) {
+    if (sts) {
         context.set("listData", true);
         context.set("noData", false);
     } else {
         context.set("listData", false);
         context.set("noData", true);
     }
-} 
+}
 
-function getDataJadwalKuliah(){
-    let params = { dosen_id : "STAFF" };
-    GModel.jadwal_kuliah(params).then(function (result){
-        if(result.success == true){
-            if(result.total > 0){
+function getDataJadwalKuliah() {
+    let params = { dosen_id: "STAFF" };
+    GModel.jadwal_kuliah(params).then(function(result) {
+        if (result.success == true) {
+            if (result.total > 0) {
                 context.set("items", result.data);
                 hasItems();
             } else {
@@ -49,13 +49,13 @@ exports.onLoaded = function(args) {
 };
 
 exports.onNavigatingTo = function(args) {
-    const page = args.object; 
+    const page = args.object;
 
     context = GModel;
 
     xLoading.show(gConfig.loadingOption);
 
-    timerModule.setTimeout(function () {
+    timerModule.setTimeout(function() {
         setDataProfile();
         getDataJadwalKuliah();
     }, gConfig.timeloader);
@@ -79,7 +79,7 @@ exports.onItemTap = function(args) {
     });
 };
 
-exports.goToFakultas = function(args){
+exports.goToFakultas = function() {
     framePage.navigate({
         moduleName: "board/fakultas/list-fakultas-page",
         animated: true,
@@ -91,9 +91,21 @@ exports.goToFakultas = function(args){
     });
 };
 
-exports.goToJadwalKuliah = function(args){
+exports.goToJadwalKuliah = function() {
     framePage.navigate({
         moduleName: "board/jadwalkuliah/list-jadwalkuliah-page",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
+    });
+};
+
+exports.goToKampus = function() {
+    framePage.navigate({
+        moduleName: "board/kampus/list-kampus-page",
         animated: true,
         transition: {
             name: "slide",
