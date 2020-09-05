@@ -114,3 +114,15 @@ exports.goToKampus = function() {
         }
     });
 };
+
+exports.goToRuangan = function() {
+    framePage.navigate({
+        moduleName: "board/ruangan/list-ruangan-page",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
+    });
+};

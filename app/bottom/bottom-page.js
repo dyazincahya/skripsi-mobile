@@ -1,10 +1,10 @@
-const frameModule = require("ui/frame");
+const frameModule = require("tns-core-modules/ui/frame");
 const appSettings = require("tns-core-modules/application-settings");
 
 const xViewModel = require("../global-model");
 var GetModel = new xViewModel([]);
 
-var context, ndata, framePage; 
+var context, ndata, framePage;
 
 exports.onLoaded = function(args) {
     const page = args.object;
@@ -12,9 +12,9 @@ exports.onLoaded = function(args) {
 
     context = GetModel
 
-    if(page.navigationContext){
+    if (page.navigationContext) {
         ndata = page.navigationContext;
-        if(ndata.tabSelected){
+        if (ndata.tabSelected) {
             context.set("tabSelected", ndata.tabSelected);
         } else {
             context.set("tabSelected", 0);
@@ -26,20 +26,20 @@ exports.onLoaded = function(args) {
     page.bindingContext = context;
 };
 
-exports.logout = function(){
+exports.logout = function() {
     confirm({
         title: "KELUAR",
         message: "Yakin ingin keluar dari aplikasi?",
         okButtonText: "Ya",
         cancelButtonText: "Batal"
     }).then((result) => {
-        if(result){
+        if (result) {
             appSettings.clear();
             framePage.navigate({
                 moduleName: "login/login-page",
                 clearHistory: true,
                 animated: true,
-                transition: { 
+                transition: {
                     name: "fade"
                 }
             });

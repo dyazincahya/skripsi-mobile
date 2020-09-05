@@ -29,7 +29,7 @@
                         <Label class="g-btn-menu" text="Kampus" tap="goToKampus" />
                         <Label class="g-btn-menu" text="Mahasiswa" />
                         <Label class="g-btn-menu" text="Matakuliah" />
-                        <Label class="g-btn-menu" text="Ruangan" />
+                        <Label class="g-btn-menu" text="Ruangan" tap="goToRuangan" />
                     </StackLayout>
                 </ScrollView>
             </StackLayout>

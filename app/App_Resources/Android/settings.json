@@ -1,1 +1,5 @@
-{"appId":"com.kang.cahya.presensi","minSdkVersion":null,"targetSdkVersion":null}
+{
+  "appId": "com.kang.cahya.presensi",
+  "minSdkVersion": 23,
+  "targetSdkVersion": 29
+}

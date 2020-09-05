@@ -1,0 +1,31 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:dd="nativescript-drop-down"   
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Edit Fakultas"></Label>
+        <ActionItem tap="save" text="Save Change" android.position="popup" />
+        <ActionItem tap="delete" text="Delete" android.position="popup" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="STRATA" class="form-label" />
+                <dd:DropDown items="{{ items_strata }}" class="form-dropdown" selectedIndex="{{ strataSelectedIndex }}" 
+                        hint="~ Pilih Strata ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="FAKULTAS" class="form-label" />
+                <TextField hint="Ex : FKOM" text="{{ xfakultas }}" class="ac-input" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="FAKULTAS NAME" class="form-label" />
+                <TextField hint="Ex : Fakultas Komputer" text="{{ fakultasname }}" class="ac-input" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

@@ -1,0 +1,26 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:dd="nativescript-drop-down" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Tambah Kampus"></Label>
+        <ActionItem tap="save" android.systemIcon="ic_menu_save" android.position="actionBar" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="KAMPUS (GEDUNG)" class="form-label" />
+                <dd:DropDown items="{{ elval_kampus }}" class="form-dropdown" selectedIndex="{{ kampusSelectedIndex }}" 
+                        hint="~ Pilih Kampus (gedung) ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="RUANGAN" class="form-label" />
+                <TextField hint="Ex : 4.5.1" text="{{ xruangan }}" class="ac-input" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>
