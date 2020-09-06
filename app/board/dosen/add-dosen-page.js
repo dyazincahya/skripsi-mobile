@@ -8,16 +8,24 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage, items_strata = ["D1", "D2", "D3", "D4", "S1", "S2", "S3"];
+var context, framePage,
+    items_jk = ["LAKI-LAKI", "PEREMPUAN"],
+    items_strata = ["D1", "D2", "D3", "D4", "S1", "S2", "S3"];
 
 function resetForm() {
     context.set("strataSelectedIndex", undefined);
-    context.set("xfakultas", "");
-    context.set("fakultasname", "");
+    context.set("jkSelectedIndex", undefined);
+    context.set("nik", "");
+    context.set("fullname", "");
+    context.set("tgl_lahir", "");
+    context.set("alamat", "");
+    context.set("nohp", "");
+    context.set("email", "");
 }
 
 exports.onLoaded = function(args) {
     framePage = args.object.frame;
+    resetForm();
 };
 
 exports.onNavigatingTo = function(args) {
@@ -26,6 +34,7 @@ exports.onNavigatingTo = function(args) {
 
     xLoading.show(gConfig.loadingOption);
     timerModule.setTimeout(function() {
+        context.set("items_jk", items_jk);
         context.set("items_strata", items_strata);
         xLoading.hide();
     }, gConfig.timeloader);
@@ -48,29 +57,34 @@ exports.onBackButtonTap = function() {
 exports.save = function() {
     let data = context;
 
-    if (data.strataSelectedIndex == undefined && data.xfakultas == undefined && data.fakultasname == undefined) {
+    if (data.strataSelectedIndex == undefined && data.jkSelectedIndex == undefined && data.nik == undefined && data.fullname == undefined && data.tgl_lahir == undefined && data.alamat == undefined && data.nohp == undefined && data.email == undefined) {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
-    if (data.strataSelectedIndex == "" && data.xfakultas == "" && data.fakultasname == "") {
+    if (data.strataSelectedIndex == "" && data.jkSelectedIndex == "" && data.nik == "" && data.fullname == "" && data.tgl_lahir == "" && data.alamat == "" && data.nohp == "" && data.email == "") {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
     let params = {
-        strata: items_strata[data.strataSelectedIndex],
-        fakultas: data.xfakultas,
-        fakultas_name: data.fakultasname
+        last_strata: items_strata[data.strataSelectedIndex],
+        jk: items_jk[data.jkSelectedIndex],
+        nik: data.nik,
+        fullname: data.fullname,
+        tgl_lahir: data.tgl_lahir,
+        alamat: data.alamat,
+        nohp: data.nohp,
+        email: data.email
     };
 
     xLoading.show(gConfig.loadingOption);
-    GModel.fakultas("add", params).then(function(result) {
+    GModel.dosen("add", params).then(function(result) {
         xLoading.hide();
         if (result.success == true) {
             toastModule.makeText(result.message).show();
             framePage.navigate({
-                moduleName: "board/fakultas/list-fakultas-page",
+                moduleName: "board/dosen/list-dosen-page",
                 animated: true,
                 transition: {
                     name: "slide",

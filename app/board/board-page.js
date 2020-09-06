@@ -126,3 +126,15 @@ exports.goToRuangan = function() {
         }
     });
 };
+
+exports.goToDosen = function() {
+    framePage.navigate({
+        moduleName: "board/dosen/list-dosen-page",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
+    });
+};

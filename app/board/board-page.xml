@@ -23,7 +23,7 @@
                 <Label text="Kelola Data Master" class="hm-subtitle" textWrap="true" />
                 <ScrollView orientation="horizontal">
                     <StackLayout orientation="horizontal">
-                        <Label class="g-btn-menu" marginLeft="5" text="Dosen" />
+                        <Label class="g-btn-menu" marginLeft="5" text="Dosen" tap="goToDosen" />
                         <Label class="g-btn-menu" text="Fakultas" tap="goToFakultas" />
                         <Label class="g-btn-menu" text="Jadwal Kuliah" tap="goToJadwalKuliah" />
                         <Label class="g-btn-menu" text="Kampus" tap="goToKampus" />

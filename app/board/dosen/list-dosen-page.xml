@@ -5,7 +5,7 @@
 
     <ActionBar>
         <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
-        <Label text="Fakultas"></Label>
+        <Label text="Dosen"></Label>
         <ActionItem tap="add" android.systemIcon="ic_menu_add" android.position="actionBar" />
     </ActionBar>
 
@@ -14,8 +14,9 @@
             <ListView items="{{ items }}" itemTap="edit">
                 <ListView.itemTemplate> 
                     <StackLayout orientation="vertical"> 
-                        <Label text="{{ f_strata + ' ' + f_fakultas }}" class="g-text-title" textWrap="true" />
-                        <Label text="{{ f_fakultas_name }}" class="g-text-subtitle" textWrap="true" />
+                        <Label text="{{ u_fullname }}" class="g-text-title" textWrap="true" />
+                        <Label text="{{ u_email }}" class="g-text-subtitle" textWrap="true" />
+                        <Label text="{{ u_nohp }}" class="g-text-subtitle" textWrap="true" />
                     </StackLayout>
                 </ListView.itemTemplate> 
             </ListView>
