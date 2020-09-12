@@ -1,0 +1,63 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:dd="nativescript-drop-down" 
+    xmlns:datetime="nativescript-datetimepicker"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Edit Mahasiswa"></Label>
+        <ActionItem tap="save" text="Save Change" android.position="popup" />
+        <ActionItem tap="delete" text="Delete" android.position="popup" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="NIM" class="form-label" />
+                <TextField hint="Ex : 202009061111" text="{{ nim }}" class="ac-input" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="STRATA" class="form-label" />
+                <dd:DropDown items="{{ items_strata }}" class="form-dropdown" selectedIndex="{{ strataSelectedIndex }}" 
+                        hint="~ Pilih Strata ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="SEMESTER" class="form-label" />
+                <dd:DropDown items="{{ items_semester }}" class="form-dropdown" selectedIndex="{{ semesterSelectedIndex }}" 
+                        hint="~ Pilih Semester ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="NAMA LENGKAP" class="form-label" />
+                <TextField hint="Nama Lengkap Mahasiswa" text="{{ fullname }}" class="ac-input" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="TANGGAL LAHIR" class="form-label" />
+                <datetime:DatePickerField class="input" hint="Tanggal Lahir Mahasiswa" marginLeft="0" dateFormat="dd-MM-yyyy" text="{{ tgl_lahir }}" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="JENIS KELAMIN" class="form-label" />
+                <dd:DropDown items="{{ items_jk }}" class="form-dropdown" selectedIndex="{{ jkSelectedIndex }}" 
+                        hint="~ Pilih Jenis Kelamin ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="ALAMAT" class="form-label" />
+                <TextView  hint="Ex : Jl. jend. sudirman No.11" text="{{ alamat }}" class="ac-input" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="EMAIL" class="form-label" />
+                <TextField hint="Ex : contoh@gmail.com" text="{{ email }}" class="ac-input" keyboardType="email" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="NOMOR HANDPHONE" class="form-label" />
+                <TextField hint="Nomor Handphone Dosen" text="{{ nohp }}" class="ac-input" keyboardType="phone" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="RUANGAN" class="form-label" />
+                <dd:DropDown items="{{ elval_ruangan }}" class="form-dropdown" selectedIndex="{{ ruanganSelectedIndex }}" 
+                        hint="~ Pilih Ruangan ~" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

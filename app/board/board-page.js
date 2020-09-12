@@ -138,3 +138,15 @@ exports.goToDosen = function() {
         }
     });
 };
+
+exports.goToMahasiswa = function() {
+    framePage.navigate({
+        moduleName: "board/mahasiswa/list-mahasiswa-page",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
+    });
+};

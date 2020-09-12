@@ -27,7 +27,7 @@
                         <Label class="g-btn-menu" text="Fakultas" tap="goToFakultas" />
                         <Label class="g-btn-menu" text="Jadwal Kuliah" tap="goToJadwalKuliah" />
                         <Label class="g-btn-menu" text="Kampus" tap="goToKampus" />
-                        <Label class="g-btn-menu" text="Mahasiswa" />
+                        <Label class="g-btn-menu" text="Mahasiswa" tap="goToMahasiswa" />
                         <Label class="g-btn-menu" text="Matakuliah" />
                         <Label class="g-btn-menu" text="Ruangan" tap="goToRuangan" />
                     </StackLayout>

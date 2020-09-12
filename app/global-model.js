@@ -199,6 +199,19 @@ function xViewModel(items) {
         });
     };
 
+    viewModel.mahasiswa = function(xfun = "index", data = {}) {
+        return httpModule.request({
+            url: gUrl + "mahasiswa/" + xfun,
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            content: JSON.stringify(data)
+        }).then(function(response) {
+            return response.content.toJSON();
+        }, function(e) {
+            console.log("Error occurred " + e);
+        });
+    };
+
     return viewModel;
 }
 
