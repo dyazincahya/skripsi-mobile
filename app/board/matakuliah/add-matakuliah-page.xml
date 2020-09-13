@@ -1,0 +1,41 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"
+    xmlns:dd="nativescript-drop-down" 
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Tambah Matakuliah"></Label>
+        <ActionItem tap="save" android.systemIcon="ic_menu_save" android.position="actionBar" />
+    </ActionBar>
+
+    <ScrollView height="100%">
+        <StackLayout>
+            <StackLayout class="form-container">
+                <Label text="FAKULTAS" class="form-label" />
+                <dd:DropDown items="{{ elval_fakultas }}" class="form-dropdown" selectedIndex="{{ fakultasSelectedIndex }}" 
+                        hint="~ Pilih Fakultas ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="KATEGORI" class="form-label" />
+                <dd:DropDown items="{{ items_kategori }}" class="form-dropdown" selectedIndex="{{ kategoriSelectedIndex }}" 
+                        hint="~ Pilih Kategori ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="TIPE" class="form-label" />
+                <dd:DropDown items="{{ items_tipe }}" class="form-dropdown" selectedIndex="{{ tipeSelectedIndex }}" 
+                        hint="~ Pilih Tipe ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="SEMESTER" class="form-label" />
+                <dd:DropDown items="{{ items_semester }}" class="form-dropdown" selectedIndex="{{ semesterSelectedIndex }}" 
+                        hint="~ Pilih Semester ~" />
+            </StackLayout>
+            <StackLayout class="form-container">
+                <Label text="NAMA MATAKULIAH" class="form-label" />
+                <TextField hint="Ex : Algoritma 1" text="{{ namamatakuliah }}" class="ac-input" />
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
+</Page>

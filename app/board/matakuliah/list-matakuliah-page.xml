@@ -1,0 +1,29 @@
+<Page
+    loaded="onLoaded"
+    navigatingTo="onNavigatingTo"  
+    xmlns="http://schemas.nativescript.org/tns.xsd">
+
+    <ActionBar>
+        <NavigationButton tap="onBackButtonTap" android.systemIcon="ic_menu_back"/>
+        <Label text="Matakuliah"></Label>
+        <ActionItem tap="add" android.systemIcon="ic_menu_add" android.position="actionBar" />
+    </ActionBar>
+
+    <StackLayout class="page__content">
+        <StackLayout visibility="{{ listData ? 'visible' : 'collapsed' }}">
+            <ListView items="{{ items }}" itemTap="edit">
+                <ListView.itemTemplate> 
+                    <StackLayout orientation="vertical"> 
+                        <Label text="{{ mk_kategori + ' . ' + mk_tipe + ' . SEMESTER ' + mk_semester }}" class="g-text-subtitle" textWrap="true" />
+                        <Label text="{{ mk_name }}" class="g-text-title" textWrap="true" />
+                        <Label text="{{ f_fakultas + ' - ' + f_fakultas_name }}" class="g-text-subtitle" textWrap="true" />
+                    </StackLayout>
+                </ListView.itemTemplate> 
+            </ListView>
+        </StackLayout>
+        <StackLayout visibility="{{ noData ? 'visible' : 'collapsed' }}">
+            <Label class="page__content-icon far" text="&#xf073;"/>
+            <Label class="page__content-placeholder" text="Tidak ada data!"/>
+        </StackLayout>
+    </StackLayout>
+</Page>

@@ -150,3 +150,15 @@ exports.goToMahasiswa = function() {
         }
     });
 };
+
+exports.goToMatakuliah = function() {
+    framePage.navigate({
+        moduleName: "board/matakuliah/list-matakuliah-page",
+        animated: true,
+        transition: {
+            name: "slide",
+            duration: 200,
+            curve: "ease"
+        }
+    });
+};

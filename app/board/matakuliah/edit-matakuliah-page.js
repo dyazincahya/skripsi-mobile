@@ -7,21 +7,24 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage, ndata;
+var context, framePage, ndata,
+    items_kategori = ["KEJURUAN", "UMUM"],
+    items_tipe = ["WAJIB", "OPTIONAL"],
+    items_semester = ["1", "2", "3", "4", "5", "6", "7"];
 
-function getKampus() {
-    GModel.kampus("getList").then(function(result) {
-        xLoading.hide();
+function getFakultas() {
+    GModel.fakultas("getList").then(function(result) {
         let data = result.data,
             elval = [],
             elid = [];
         for (let i = 0; i < data.length; i++) {
-            elid.push(data[i].k_id);
-            elval.push(data[i].k_name);
+            elid.push(data[i].f_id);
+            elval.push(data[i].f_fakultas);
         }
-        context.set("elid_kampus", elid);
-        context.set("elval_kampus", elval);
-        context.set("kampusSelectedIndex", elid.indexOf(ndata.data.r_kampus));
+        context.set("elid_fakultas", elid);
+        context.set("elval_fakultas", elval);
+        context.set("fakultasSelectedIndex", elid.indexOf(ndata.data.mk_fakultas));
+        xLoading.hide();
     });
 }
 
@@ -30,7 +33,10 @@ exports.onLoaded = function(args) {
 
     xLoading.show(gConfig.loadingOption);
     timerModule.setTimeout(function() {
-        getKampus();
+        context.set("items_kategori", items_kategori);
+        context.set("items_tipe", items_tipe);
+        context.set("items_semester", items_semester);
+        getFakultas();
     }, gConfig.timeloader);
 };
 
@@ -40,7 +46,10 @@ exports.onNavigatingTo = function(args) {
     context = GModel;
 
     timerModule.setTimeout(function() {
-        context.set("xruangan", ndata.data.r_name);
+        context.set("kategoriSelectedIndex", items_kategori.indexOf(ndata.data.mk_kategori));
+        context.set("tipeSelectedIndex", items_tipe.indexOf(ndata.data.mk_tipe));
+        context.set("semesterSelectedIndex", items_semester.indexOf(ndata.data.mk_semester));
+        context.set("namamatakuliah", ndata.data.mk_name);
     }, gConfig.timeloader + 500);
 
     page.bindingContext = context;
@@ -48,7 +57,7 @@ exports.onNavigatingTo = function(args) {
 
 exports.onBackButtonTap = function() {
     framePage.navigate({
-        moduleName: "board/ruangan/list-ruangan-page",
+        moduleName: "board/matakuliah/list-matakuliah-page",
         animated: true,
         transition: {
             name: "slide",
@@ -61,29 +70,32 @@ exports.onBackButtonTap = function() {
 exports.save = function() {
     let data = context;
 
-    if (data.name == undefined && data.kampusSelectedIndex == undefined) {
+    if (data.fakultasSelectedIndex == undefined && data.kategoriSelectedIndex == undefined && data.tipeSelectedIndex == undefined && data.semesterSelectedIndex == undefined && data.namamatakuliah == undefined) {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
-    if (data.name == "" && data.kampusSelectedIndex == "") {
+    if (data.fakultasSelectedIndex == "" && data.kategoriSelectedIndex == "" && data.tipeSelectedIndex == "" && data.semesterSelectedIndex == "" && data.namamatakuliah == "") {
         toastModule.makeText("Semua inputan wajib diisi").show();
         return;
     }
 
     let params = {
-        id: ndata.data.r_id,
-        name: data.xruangan,
-        kampus: data.elid_kampus[data.kampusSelectedIndex]
+        id: ndata.data.mk_id,
+        fakultas: data.elid_fakultas[data.fakultasSelectedIndex],
+        kategori: items_kategori[data.kategoriSelectedIndex],
+        tipe: items_tipe[data.tipeSelectedIndex],
+        semester: items_semester[data.semesterSelectedIndex],
+        name: data.namamatakuliah
     };
 
     xLoading.show(gConfig.loadingOption);
-    GModel.ruangan("edit", params).then(function(result) {
+    GModel.matakuliah("edit", params).then(function(result) {
         xLoading.hide();
         if (result.success == true) {
             toastModule.makeText(result.message).show();
             framePage.navigate({
-                moduleName: "board/ruangan/list-ruangan-page",
+                moduleName: "board/matakuliah/list-matakuliah-page",
                 animated: true,
                 transition: {
                     name: "slide",
@@ -101,22 +113,22 @@ exports.save = function() {
 exports.delete = function() {
     confirm({
         title: "Hapus",
-        message: "Apa kamu yakin ingin menghapus ruangan ini?",
+        message: "Apa kamu yakin ingin menghapus matakuliah ini?",
         okButtonText: "Ya",
         cancelButtonText: "Batal"
     }).then((result) => {
         if (result) {
             let params = {
-                id: ndata.data.r_id
+                id: ndata.data.mk_id
             };
 
             xLoading.show(gConfig.loadingOption);
-            GModel.ruangan("delete", params).then(function(result) {
+            GModel.matakuliah("delete", params).then(function(result) {
                 xLoading.hide();
                 if (result.success == true) {
                     toastModule.makeText(result.message).show();
                     framePage.navigate({
-                        moduleName: "board/ruangan/list-ruangan-page",
+                        moduleName: "board/matakuliah/list-matakuliah-page",
                         animated: true,
                         transition: {
                             name: "slide",
