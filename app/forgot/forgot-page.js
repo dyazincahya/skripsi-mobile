@@ -8,27 +8,27 @@ const xLoading = new LoadingIndicatorModule();
 const GlobalModel = require("../global-model");
 var GModel = new GlobalModel([]);
 
-var context, framePage; 
+var context, framePage;
 
-function playAudio(){
+function playAudio() {
     const player = new audioModule.TNSPlayer();
     const playerOptions = {
         audioFile: '~/suara/forgot.mp3',
         loop: false,
-        completeCallback: function () {
+        completeCallback: function() {
             console.log('finished playing');
         },
-        errorCallback: function (errorObject) {
+        errorCallback: function(errorObject) {
             console.log(JSON.stringify(errorObject));
         },
-        infoCallback: function (args) {
+        infoCallback: function(args) {
             console.log(JSON.stringify(args));
         },
     };
-     
-    player.playFromUrl(playerOptions).then(function (res) {
+
+    player.playFromUrl(playerOptions).then(function(res) {
         console.log(res);
-    }).catch(function (err) {
+    }).catch(function(err) {
         console.log('something went wrong...', err);
     });
 }
@@ -39,29 +39,25 @@ exports.onLoaded = function(args) {
 };
 
 exports.onNavigatingTo = function(args) {
-    const page = args.object; 
-
+    const page = args.object;
     context = GModel;
-
-    context.set("email", "dyazincahya@gmail.com");
-
     page.bindingContext = context;
 };
 
 exports.forgot = function(args) {
-	let data = context;
-	if(data.email == undefined && data.password == undefined){ 
-		toastModule.makeText("Email dan password wajib diisi").show();
-		return;
-	} 
+    let data = context;
+    if (data.email == undefined && data.password == undefined) {
+        toastModule.makeText("Email dan password wajib diisi").show();
+        return;
+    }
 
-	let params = {
-		email: data.email
-	}; 
+    let params = {
+        email: data.email
+    };
 
-	xLoading.show(gConfig.loadingOption);
-	GModel.users_forgot_password(params).then(function (result){
-        if(result.success == true){
+    xLoading.show(gConfig.loadingOption);
+    GModel.users_forgot_password(params).then(function(result) {
+        if (result.success == true) {
             context.set("email", "");
             framePage.navigate({
                 moduleName: "login/login-page",

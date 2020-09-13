@@ -17,12 +17,10 @@
   "dependencies": {
     "@nativescript/theme": "~2.3.0",
     "@nstudio/nativescript-loading-indicator": "4.0.0",
-    "@nstudio/nativescript-pulltorefresh": "^2.0.0",
     "audio": "1.2.0",
     "nativescript-audio": "^5.1.1",
     "nativescript-datetimepicker": "^1.2.2",
     "nativescript-drop-down": "^5.0.6",
-    "nativescript-secure-storage": "^2.6.1",
     "nativescript-toast": "^2.0.0",
     "tns-core-modules": "~6.5.0"
   },
