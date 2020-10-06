@@ -4,6 +4,9 @@
 ### Integrated To
 Repo ini terintegrasi dengan repo [SKRIPSI-BACKEND](https://github.com/dyazincahya/skripsi-backend) sebagai penghubung antarmuka aplikasi mobile android dengan database
 
+### Unduh Aplikasi Via Playstore
+[menuju playstore sekarang](https://play.google.com/store/apps/details?id=com.kang.cahya.presensi)
+
 ### Akses
 ##### STAFF
 - username : staff@uniku.ac.id
