@@ -1,4 +1,19 @@
 {
     "search.smartCase": true,
-    "debug.console.fontFamily": "JetBrains Mono"
+    "debug.console.fontFamily": "JetBrains Mono",
+    "NativescriptExtend.fileAssociations": [
+        {
+            "systemId": "d:\\project\\NativescriptProject\\skripsi-mobile\\schema\\tns.xsd",
+            "pattern": "**/**/*.xml"
+        },
+        {
+            "systemId": "http://www.w3.org/2001/XMLSchema.xsd",
+            "pattern": "d:\\project\\NativescriptProject\\skripsi-mobile\\schema\\tns.xsd"
+        }
+    ],
+    "files.exclude": {
+        "schema": true
+    },
+    "NativescriptExtend.format.enabled": true,
+    "NativescriptExtend.validation.enabled": true
 }
