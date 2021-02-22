@@ -56,19 +56,6 @@ function xViewModel(items) {
         });
     };
 
-    viewModel.mahasiswa = function(data = {}) {
-        return httpModule.request({
-            url: gUrl + "mahasiswa",
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            content: JSON.stringify(data)
-        }).then(function(response) {
-            return response.content.toJSON();
-        }, function(e) {
-            console.log("Error occurred " + e);
-        });
-    };
-
     viewModel.presensi_ambil_data = function(data = {}) {
         return httpModule.request({
             url: gUrl + "presensi/ambil_data",

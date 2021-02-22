@@ -31,7 +31,7 @@ function getDataMahsiswa(ruangan_param, matkul_param){
         ruangan : ruangan_param, 
         matakuliah : matkul_param 
     };
-    GModel.mahasiswa(params).then(function (result){
+    GModel.mahasiswa("index", params).then(function (result){
         if(result.success == true){
             if(result.total > 0){
                 context.set("items", result.data);
